@@ -36,4 +36,11 @@ with DAG(
         verbose=1
     )
 
-    landing_to_bronze >> bronze_to_silver
+    silver_to_gold = SparkSubmitOperator(
+        application=os.path.join(current_directory, 'silver_to_gold.py'),
+        task_id='silver_to_gold',
+        conn_id='spark-default',
+        verbose=1
+    )
+
+    landing_to_bronze >> bronze_to_silver >> silver_to_gold
