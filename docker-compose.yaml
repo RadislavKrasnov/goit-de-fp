@@ -42,7 +42,7 @@ services:
           wget -q https://repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.12.0/commons-pool2-2.12.0.jar -P /opt/spark/jars
 
         # Install PySpark and kafka-python
-        RUN pip install --no-cache-dir pyspark==4.0.0 kafka-python python-dotenv
+        RUN pip install --no-cache-dir pyspark==4.0.0 kafka-python python-dotenv requests
 
         WORKDIR /app
         CMD ["tail", "-f", "/dev/null"]
